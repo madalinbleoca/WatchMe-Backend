@@ -12,5 +12,9 @@ public interface ProductService {
 
    Product getProductByName(String name);
 
+   void createProduct(Product product);
 
+   void updateProduct(Product product);
+
+   void deleteProduct(Long productId);
 }

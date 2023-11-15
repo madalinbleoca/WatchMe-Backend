@@ -41,13 +41,11 @@ public class OrderImpl implements OrderService {
 
     @Override
     public void createOrder(Order order, Cart cart) {
-        //Transfer items from the cart to the order
         List<CartItem> cartItems = cartItemRepository.getCartItemsByCart_Id(cart.getId());
         if (cartItems == null || cartItems.isEmpty()) {
             throw new ResourceNotFoundException("The cart is empty. Cannot create an order.");
         }
 
-        // Set the order items from the cart
         List<OrderItem> orderItems = new ArrayList<>();
         for (CartItem cartItem : cartItems) {
             OrderItem orderItem = new OrderItem();

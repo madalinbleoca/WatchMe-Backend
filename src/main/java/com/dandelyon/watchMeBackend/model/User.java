@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.management.relation.Role;
+import java.util.List;
 import java.util.Set;
 
 
@@ -38,6 +39,9 @@ public class User {
 
     @Column(name = "address")
     private String address;
+
+    @OneToMany(mappedBy = "user")
+    private List<Cart> shoppingCarts;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
