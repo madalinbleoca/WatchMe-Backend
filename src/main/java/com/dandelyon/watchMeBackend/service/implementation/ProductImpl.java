@@ -37,17 +37,17 @@ public class ProductImpl implements ProductService {
     }
 
     @Override
-    public void createProduct(Product product) {
+    public Product createProduct(Product product) {
         Product existingProduct = productRepository.findProductsByName(product.getName());
         if (existingProduct == null) {
-            productRepository.save(product);
+         return productRepository.save(product);
         } else {
             throw new ResourceNotFoundException("Product with this name is not unique.");
         }
     }
 
     @Override
-    public void updateProduct(Product product) {
+    public Product updateProduct(Product product) {
         Product existingProduct = getProductById(product.getId());
 
         existingProduct.setName(product.getName());
@@ -55,7 +55,7 @@ public class ProductImpl implements ProductService {
         existingProduct.setDescription(product.getDescription());
         existingProduct.setStockQuantity(product.getStockQuantity());
 
-        productRepository.save(existingProduct);
+       return productRepository.save(existingProduct);
     }
 
     @Override
