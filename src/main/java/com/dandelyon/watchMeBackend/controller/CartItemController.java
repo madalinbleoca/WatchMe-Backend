@@ -29,7 +29,7 @@ public class CartItemController {
         return "redirect:/cart";
     }
 
-    @GetMapping("/remove/{cartItemId}")
+    @DeleteMapping("/remove/{cartItemId}")
     public String removeFromCart(@PathVariable Long cartItemId) {
         cartItemService.removeFromCart(cartItemId);
         return "redirect:/cart";

@@ -47,6 +47,6 @@ public class ProductController {
         Product productFromDB = productService.getProductById(id);
         productService.deleteProduct(id);
 
-        return new ResponseEntity<>("Product with id " + id + "was deleted from DB", HttpStatus.OK);
+        return new ResponseEntity<>("Product with id " + id + " was deleted from DB", HttpStatus.OK);
    }
 }
